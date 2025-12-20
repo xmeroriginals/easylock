@@ -116,6 +116,17 @@ python run.py
 
 - Right-click an `.elock` file and select **"Unlock File"**.
 
+### Platform Support Status
+
+| Platform | Version | Context Menu | System Tray | Auto-Start |
+|----------|---------|--------------|-------------|------------|
+| Windows  | 10/11   | ✅           | ✅          | ✅         |
+| Linux    | Ubuntu* | ⚠️           | ✅          | ⚠️         |
+
+✅ Fully Supported | ⚠️ Manual setup required
+
+> **Note on Linux support**: As the developer currently lacks a dedicated Linux environment, the Linux version has not been fully tested or packaged. Linux users are encouraged to install from source and are welcome to contribute by reporting issues.
+
 ---
 
 ## 🛠️ Technical Details
@@ -158,6 +169,16 @@ This project is licensed under the **Digital Freedom and Ethical Technology Lice
 - [cryptography](https://cryptography.io/) - Cryptographic primitives
 - [Material Symbols](https://fonts.google.com/icons) - Rounded icons (Local)
 - [Lexend / Poppins / Space Grotesk](https://fonts.google.com/) - Professional typography (Local)
+
+---
+
+### Güvenlik
+
+⚠️ **Önemli**: Şifrenizi unutursanız dosyalarınızı kurtaramazsınız. Bu, maksimum güvenlik için tasarım gereğidir.
+
+### Linux Notu
+
+⚠️ **Not**: Geliştiricinin şu an için bir Linux ortamı bulunmadığından, Linux sürümü paketlenmemiş ve tam olarak test edilmemiştir. Linux kullanıcılarının şimdilik kaynak koddan kurulum yapması (Method 1) ve karşılaştıkları sorunları bildirmesi rica olunur.
 
 ---
 
