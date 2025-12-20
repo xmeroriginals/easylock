@@ -1,0 +1,15 @@
+#licenseText {
+  overflow: auto;
+}
+
+#licenseText::-webkit-scrollbar {
+  display: none;
+}
+
+#licenseText {
+  scrollbar-width: none;
+}
+
+#licenseText {
+  -ms-overflow-style: none;
+}
