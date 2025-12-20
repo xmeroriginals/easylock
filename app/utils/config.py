@@ -58,8 +58,39 @@ def set_auto_start(enabled: bool):
     
     if sys.platform == 'win32':
         _set_windows_autostart(enabled)
+    elif sys.platform.startswith('linux'):
+        _set_linux_autostart(enabled)
 
-def _set_windows_autostart(enabled: bool):
+def _set_linux_autostart(enabled: bool):
+    """Manage Linux .desktop files in ~/.config/autostart/."""
+    autostart_dir = os.path.expanduser('~/.config/autostart')
+    desktop_file = os.path.join(autostart_dir, 'easylock.desktop')
+    
+    if enabled:
+        if not os.path.exists(autostart_dir):
+            os.makedirs(autostart_dir, exist_ok=True)
+            
+        exe_path = sys.executable
+        if getattr(sys, 'frozen', False):
+            cmd = exe_path
+        else:
+            main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
+            cmd = f'{exe_path} {main_py}'
+            
+        content = f"""[Desktop Entry]
+Type=Application
+Name=EasyLock
+Exec={cmd}
+Icon=easylock
+Comment=Secure File Encryption
+Terminal=false
+X-GNOME-Autostart-enabled=true
+"""
+        with open(desktop_file, 'w', encoding='utf-8') as f:
+            f.write(content)
+    else:
+        if os.path.exists(desktop_file):
+            os.remove(desktop_file)
     """Manage Windows registry entries for startup integration."""
     try:
         import winreg
@@ -68,8 +99,11 @@ def _set_windows_autostart(enabled: bool):
         
         if enabled:
             exe_path = sys.executable
-            main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
-            cmd = f'"{exe_path}" "{main_py}"'
+            if getattr(sys, 'frozen', False):
+                cmd = f'"{exe_path}"'
+            else:
+                main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
+                cmd = f'"{exe_path}" "{main_py}"'
             winreg.SetValueEx(key, "EasyLock", 0, winreg.REG_SZ, cmd)
         else:
             try:
@@ -90,3 +124,13 @@ def detect_language() -> str:
     except Exception:
         pass
     return 'EN'
+
+def get_resource_path(relative_path: str) -> str:
+    """Get the absolute path to a resource, works for dev and for PyInstaller."""
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    
+    return os.path.join(base_path, relative_path)

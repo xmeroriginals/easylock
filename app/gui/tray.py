@@ -3,7 +3,7 @@ import os
 from PyQt6.QtWidgets import QSystemTrayIcon, QMenu, QApplication
 from PyQt6.QtGui import QIcon, QAction
 from app.utils.config import (set_preset_password, is_auto_start_enabled, 
-                              set_auto_start, detect_language)
+                              set_auto_start, detect_language, get_resource_path)
 from app.gui.dialogs import PresetPasswordDialog, InfoDialog
 
 class EasyLockTray(QSystemTrayIcon):
@@ -14,9 +14,7 @@ class EasyLockTray(QSystemTrayIcon):
         self.lang = detect_language()
         
         # Initialize resources
-        icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "resources", "logotwo.png")
-        if not os.path.exists(icon_path):
-            icon_path = "logotwo.png" 
+        icon_path = get_resource_path(os.path.join("resources", "logotwo.png"))
         
         self.setIcon(QIcon(icon_path))
         self.setToolTip("EasyLock")

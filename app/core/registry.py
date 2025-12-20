@@ -26,10 +26,14 @@ def _register_windows():
     try:
         import winreg
         exe_path = sys.executable
-        main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
         
-        # Base Command
-        base_cmd = f'"{exe_path}" "{main_py}"'
+        if getattr(sys, 'frozen', False):
+            # Running as a PyInstaller bundle
+            base_cmd = f'"{exe_path}"'
+        else:
+            # Running from source
+            main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
+            base_cmd = f'"{exe_path}" "{main_py}"'
         
         # Add to '*' (all files)
         _create_key(winreg.HKEY_CLASSES_ROOT, r"*\shell\EasyLock.Lock", "Lock File", f'{base_cmd} lock "%1"')
@@ -40,11 +44,12 @@ def _register_windows():
 
 def _create_key(hkey, path, title, command):
     import winreg
+    from app.utils.config import get_resource_path
     key = winreg.CreateKey(hkey, path)
     winreg.SetValue(key, "", winreg.REG_SZ, title)
     
     # Set Icon if available
-    icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "resources", "logotwo.ico")
+    icon_path = get_resource_path(os.path.join("resources", "logotwo.ico"))
     if os.path.exists(icon_path):
         winreg.SetValueEx(key, "Icon", 0, winreg.REG_SZ, icon_path)
         
@@ -71,9 +76,37 @@ def _is_installed_windows() -> bool:
 
 def _register_linux():
     """Implement Linux .desktop entries for file manager integration."""
-    # Placeholder for Linux-specific desktop entry implementation
-    pass
+    apps_dir = os.path.expanduser('~/.local/share/applications')
+    os.makedirs(apps_dir, exist_ok=True)
+    
+    exe_path = sys.executable
+    if getattr(sys, 'frozen', False):
+        base_cmd = exe_path
+    else:
+        main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
+        base_cmd = f'{exe_path} {main_py}'
+    
+    # Create main app desktop entry
+    desktop_file = os.path.join(apps_dir, 'easylock.desktop')
+    content = f"""[Desktop Entry]
+Type=Application
+Name=EasyLock
+Exec={base_cmd} %F
+Icon=easylock
+Comment=Secure Your Files
+Terminal=false
+Categories=Utility;Security;
+MimeType=application/octet-stream;
+"""
+    with open(desktop_file, 'w', encoding='utf-8') as f:
+        f.write(content)
+
+    # For deep integration (Nautilus/Nemo/Caja actions could be added here)
+    # For now, we rely on the application being in the "Open With" menu 
+    # and the system tray for general management.
 
 def _unregister_linux():
     """Remove Linux-specific desktop entries."""
-    pass
+    desktop_file = os.path.expanduser('~/.local/share/applications/easylock.desktop')
+    if os.path.exists(desktop_file):
+        os.remove(desktop_file)
