@@ -1,335 +1,426 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO & Social Meta Tags -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyLock - Fast & Secure File Encryption | AES-256 Protection</title>
-    <meta name="description"
-        content="EasyLock provides military-grade AES-256 encryption for your files with seamless shell integration. Protect your data in seconds with right-click encryption.">
-    <meta name="keywords"
-        content="file encryption, AES-256, secure files, Windows encryption, Linux encryption, data protection, file security">
-    <meta name="author" content="EasyLock">
+    <meta
+      name="description"
+      content="EasyLock provides military-grade AES-256 encryption for your files with seamless shell integration. Protect your data in seconds with right-click encryption."
+    />
+    <meta
+      name="keywords"
+      content="file encryption, AES-256, secure files, Windows encryption, Linux encryption, data protection, file security"
+    />
+    <meta name="author" content="EasyLock" />
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="EasyLock - Fast & Secure File Encryption">
-    <meta property="og:description"
-        content="Military-grade file encryption integrated directly into your system. Secure your files in seconds.">
-    <!-- Assets & Styles -->
-    <link rel="icon" type="image/x-icon" href="assets/logotwo.png">
-    <link rel="stylesheet" href="css/style.css">
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="EasyLock - Fast & Secure File Encryption"
+    />
+    <meta
+      property="og:description"
+      content="Military-grade file encryption integrated directly into your system. Secure your files in seconds."
+    />
+    <link rel="icon" type="image/x-icon" href="assets/logotwo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-</head>
-
-<body>
-    <!-- Navigation -->
+  <body>
     <header id="header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="assets/logotwo.png" alt="EasyLock Logo" class="logo-img">
-                <span class="logo-text">EasyLock</span>
-            </div>
-
-            <nav class="nav-desktop">
-                <ul>
-                    <li><a href="#home" data-key="nav_home">Home</a></li>
-                    <li><a href="#features" data-key="nav_features">Features</a></li>
-                    <li><a href="#how-it-works" data-key="nav_how">How it Works</a></li>
-                    <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
-                    <li><a href="#download" class="btn-download-nav" data-key="btn_download">Download Now</a></li>
-                </ul>
-            </nav>
-
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+      <div class="container">
+        <div class="logo-container">
+          <img src="assets/logotwo.png" alt="EasyLock Logo" class="logo-img" />
+          <span class="logo-text">EasyLock</span>
         </div>
+
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="#home" data-key="nav_home">Home</a></li>
+            <li><a href="#features" data-key="nav_features">Features</a></li>
+            <li><a href="#how-it-works" data-key="nav_how">How it Works</a></li>
+            <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
+            <li>
+              <a
+                href="#download"
+                class="btn-download-nav"
+                data-key="btn_download"
+                >Download Now</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-menu-overlay">
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="#home" data-key="nav_home">Home</a></li>
-                <li><a href="#features" data-key="nav_features">Features</a></li>
-                <li><a href="#how-it-works" data-key="nav_how">How it Works</a></li>
-                <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
-                <li><a href="#download" class="btn-download-mobile" data-key="btn_download">Download Now</a></li>
-            </ul>
-        </nav>
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="#home" data-key="nav_home">Home</a></li>
+          <li><a href="#features" data-key="nav_features">Features</a></li>
+          <li><a href="#how-it-works" data-key="nav_how">How it Works</a></li>
+          <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
+          <li>
+            <a
+              href="#download"
+              class="btn-download-mobile"
+              data-key="btn_download"
+              >Download Now</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
 
-    <!-- Hero -->
     <section id="home" class="hero">
-        <div class="particles-bg"></div>
-        <div class="hero-content">
-            <div class="hero-badge" data-key="hero_badge">AES-256 Encryption</div>
-            <h1 data-key="hero_title">Secure Your Files in Seconds</h1>
-            <p data-key="hero_desc">EasyLock is the fastest and most secure way to encrypt your files directly from the
-                Context Menu. Powered by military-grade AES-256 encryption.</p>
-            <div class="hero-buttons">
-                <a href="#download" class="btn btn-primary">
-                    <i class="material-icons">desktop_windows</i>
-                    <span data-key="btn_download">Download Now</span>
-                </a>
-                <a href="#features" class="btn btn-secondary">
-                    <i class="material-icons">play_circle</i>
-                    <span data-key="btn_learn">Learn More</span>
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">256-bit</div>
-                    <div class="stat-label" data-key="stat_encryption">Encryption</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">&lt;1s</div>
-                    <div class="stat-label" data-key="stat_speed">Lock Speed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label" data-key="stat_secure">Secure</div>
-                </div>
-            </div>
+      <div class="particles-bg"></div>
+      <div class="hero-content">
+        <div class="hero-badge" data-key="hero_badge">AES-256 Encryption</div>
+        <h1 data-key="hero_title">Secure Your Files in Seconds</h1>
+        <p data-key="hero_desc">
+          EasyLock is the fastest and most secure way to encrypt your files
+          directly from the Context Menu. Powered by military-grade AES-256
+          encryption.
+        </p>
+        <div class="hero-buttons">
+          <a href="#download" class="btn btn-primary">
+            <i class="material-icons">desktop_windows</i>
+            <span data-key="btn_download">Download Now</span>
+          </a>
+          <a href="#features" class="btn btn-secondary">
+            <i class="material-icons">play_circle</i>
+            <span data-key="btn_learn">Learn More</span>
+          </a>
         </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">256-bit</div>
+            <div class="stat-label" data-key="stat_encryption">Encryption</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">&lt;1s</div>
+            <div class="stat-label" data-key="stat_speed">Lock Speed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label" data-key="stat_secure">Secure</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Features -->
     <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title" data-key="nav_features">Features</h2>
-            <p class="section-subtitle" data-key="features_subtitle">Everything you need to keep your files secure</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="material-icons">bolt</i></div>
-                    <h3 data-key="feat_fast_title">Lightning Fast</h3>
-                    <p data-key="feat_fast_desc">Optimized performance ensures your files are encrypted instantly
-                        without lag.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="material-icons">shield</i></div>
-                    <h3 data-key="feat_secure_title">AES-256 Security</h3>
-                    <p data-key="feat_secure_desc">Military-grade encryption keeps your data safe from prying eyes. Your
-                        keys, your data.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="material-icons">mouse</i></div>
-                    <h3 data-key="feat_easy_title">Easy Integration</h3>
-                    <p data-key="feat_easy_desc">Seamlessly integrated into your system shell. Just right-click to
-                        encrypt.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="material-icons">auto_fix_high</i></div>
-                    <h3 data-key="feat_smart_title">Smart Lock</h3>
-                    <p data-key="feat_smart_desc">Hold Meta (Win/Cmd) key to instantly lock/unlock using your preset
-                        password.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="material-icons">key</i></div>
-                    <h3 data-key="feat_password_title">Secure Storage</h3>
-                    <p data-key="feat_password_desc">Passwords stored using OS-native secure storage. Never stored in
-                        plain text.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="material-icons">rocket_launch</i></div>
-                    <h3 data-key="feat_startup_title">Auto-Start</h3>
-                    <p data-key="feat_startup_desc">Runs quietly in system tray. Always ready when you need it.</p>
-                </div>
+      <div class="container">
+        <h2 class="section-title" data-key="nav_features">Features</h2>
+        <p class="section-subtitle" data-key="features_subtitle">
+          Everything you need to keep your files secure
+        </p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="material-icons">bolt</i></div>
+            <h3 data-key="feat_fast_title">Lightning Fast</h3>
+            <p data-key="feat_fast_desc">
+              Optimized performance ensures your files are encrypted instantly
+              without lag.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="material-icons">shield</i></div>
+            <h3 data-key="feat_secure_title">AES-256 Security</h3>
+            <p data-key="feat_secure_desc">
+              Military-grade encryption keeps your data safe from prying eyes.
+              Your keys, your data.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="material-icons">mouse</i></div>
+            <h3 data-key="feat_easy_title">Easy Integration</h3>
+            <p data-key="feat_easy_desc">
+              Seamlessly integrated into your system shell. Just right-click to
+              encrypt.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="material-icons">auto_fix_high</i>
             </div>
+            <h3 data-key="feat_smart_title">Smart Lock</h3>
+            <p data-key="feat_smart_desc">
+              Hold Meta (Win/Cmd) key to instantly lock/unlock using your preset
+              password.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="material-icons">key</i></div>
+            <h3 data-key="feat_password_title">Secure Storage</h3>
+            <p data-key="feat_password_desc">
+              Passwords stored using OS-native secure storage. Never stored in
+              plain text.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="material-icons">rocket_launch</i>
+            </div>
+            <h3 data-key="feat_startup_title">Auto-Start</h3>
+            <p data-key="feat_startup_desc">
+              Runs quietly in system tray. Always ready when you need it.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Showcase -->
     <section id="how-it-works" class="showcase">
-        <div class="container">
-            <div class="showcase-content">
-                <div class="showcase-text">
-                    <h2 data-key="showcase_title">How it Works</h2>
-                    <p class="showcase-desc" data-key="showcase_desc">Three simple steps to secure your files</p>
-                    <ul class="steps-list">
-                        <li>
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <i class="material-icons check-icon">check_circle</i>
-                                <span data-key="step_1">Right-click any file or folder</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <i class="material-icons check-icon">check_circle</i>
-                                <span data-key="step_2">Select 'Lock File' from the menu</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <i class="material-icons check-icon">check_circle</i>
-                                <span data-key="step_3">Enter password or use Preset mode</span>
-                            </div>
-                        </li>
-                    </ul>
+      <div class="container">
+        <div class="showcase-content">
+          <div class="showcase-text">
+            <h2 data-key="showcase_title">How it Works</h2>
+            <p class="showcase-desc" data-key="showcase_desc">
+              Three simple steps to secure your files
+            </p>
+            <ul class="steps-list">
+              <li>
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <span data-key="step_1">Right-click any file or folder</span>
                 </div>
-                <div class="showcase-visual">
-                    <div class="context-menu-demo">
-                        <div class="file-icon">
-                            <img src="assets/logotwo.png" alt="EasyLock" class="demo-logo">
-                            <div class="file-name">important_document.pdf</div>
-                        </div>
-                        <div class="context-menu">
-                            <div class="menu-item"><i class="material-icons">folder_open</i> Open</div>
-                            <div class="menu-divider"></div>
-                            <div class="menu-item highlight"><i class="material-icons">lock</i> Lock File</div>
-                            <div class="menu-item"><i class="material-icons">lock_open</i> Unlock File</div>
-                            <div class="menu-divider"></div>
-                            <div class="menu-item"><i class="material-icons">settings</i> Properties</div>
-                        </div>
-                    </div>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <span data-key="step_2"
+                    >Select 'Lock File' from the menu</span
+                  >
                 </div>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <span data-key="step_3"
+                    >Enter password or use Preset mode</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="showcase-visual">
+            <div class="context-menu-demo">
+              <div class="file-icon">
+                <img
+                  src="assets/logotwo.png"
+                  alt="EasyLock"
+                  class="demo-logo"
+                />
+                <div class="file-name">important_document.pdf</div>
+              </div>
+              <div class="context-menu">
+                <div class="menu-item">
+                  <i class="material-icons">folder_open</i> Open
+                </div>
+                <div class="menu-divider"></div>
+                <div class="menu-item highlight">
+                  <i class="material-icons">lock</i> Lock File
+                </div>
+                <div class="menu-item">
+                  <i class="material-icons">lock_open</i> Unlock File
+                </div>
+                <div class="menu-divider"></div>
+                <div class="menu-item">
+                  <i class="material-icons">settings</i> Properties
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq" class="faq">
-        <div class="container">
-            <h2 class="section-title" data-key="faq_title">Frequently Asked Questions</h2>
-            <p class="section-subtitle" data-key="faq_subtitle">Everything you need to know about EasyLock</p>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3 data-key="faq_q1">Is my data safe?</h3>
-                        <i class="material-icons">expand_more</i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-key="faq_a1">Yes! EasyLock uses AES-256 GCM encryption. Your passwords are stored
-                            securely using OS-native secure APIs.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3 data-key="faq_q2">What if I forget my password?</h3>
-                        <i class="material-icons">expand_more</i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-key="faq_a2">Encrypted files cannot be recovered without the correct password. This
-                            ensures maximum security. We recommend using a password manager.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3 data-key="faq_q3">Which platforms are supported?</h3>
-                        <i class="material-icons">expand_more</i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-key="faq_a3">EasyLock is compatible with Windows 10/11 and Linux (Ubuntu 20.04+). It
-                            integrates seamlessly with system file managers.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3 data-key="faq_q4">How fast is the encryption?</h3>
-                        <i class="material-icons">expand_more</i>
-                    </div>
-                    <div class="faq-answer">
-                        <p data-key="faq_a4">EasyLock is optimized for speed. Most common files encrypt in under a
-                            second on modern systems.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title" data-key="faq_title">
+          Frequently Asked Questions
+        </h2>
+        <p class="section-subtitle" data-key="faq_subtitle">
+          Everything you need to know about EasyLock
+        </p>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3 data-key="faq_q1">Is my data safe?</h3>
+              <i class="material-icons">expand_more</i>
             </div>
+            <div class="faq-answer">
+              <p data-key="faq_a1">
+                Yes! EasyLock uses AES-256 GCM encryption. Your passwords are
+                stored securely using OS-native secure APIs.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3 data-key="faq_q2">What if I forget my password?</h3>
+              <i class="material-icons">expand_more</i>
+            </div>
+            <div class="faq-answer">
+              <p data-key="faq_a2">
+                Encrypted files cannot be recovered without the correct
+                password. This ensures maximum security. We recommend using a
+                password manager.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3 data-key="faq_q3">Which platforms are supported?</h3>
+              <i class="material-icons">expand_more</i>
+            </div>
+            <div class="faq-answer">
+              <p data-key="faq_a3">
+                EasyLock is compatible with Windows 10/11 and Linux (Ubuntu
+                20.04+). It integrates seamlessly with system file managers.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3 data-key="faq_q4">How fast is the encryption?</h3>
+              <i class="material-icons">expand_more</i>
+            </div>
+            <div class="faq-answer">
+              <p data-key="faq_a4">
+                EasyLock is optimized for speed. Most common files encrypt in
+                under a second on modern systems.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Download -->
     <section id="download" class="download">
-        <div class="container">
-            <div class="download-content">
-                <h2 data-key="download_title">Get Started Today</h2>
-                <p data-key="download_desc">Start protecting your files in seconds. Free and open source.</p>
+      <div class="container">
+        <div class="download-content">
+          <h2 data-key="download_title">Get Started Today</h2>
+          <p data-key="download_desc">
+            Start protecting your files in seconds. Free and open source.
+          </p>
 
-                <div class="download-buttons">
-                    <div class="download-option">
-                        <a href="https://github.com/xmeroriginals/easylock/releases/tag/v1.0.0"
-                            class="btn btn-primary btn-large">
-                            <i class="material-icons">desktop_windows</i>
-                            <span data-key="btn_download_windows">Download for Windows</span>
-                        </a>
-                        <div class="download-info">
-                            <span class="version">v1.0.0</span>
-                            <span class="separator">•</span>
-                            <span class="compatible">Windows 10/11</span>
-                            <span class="separator">•</span>
-                            <span class="size">~41MB</span>
-                        </div>
-                    </div>
-
-                    <div class="download-option">
-                        <a href="https://github.com/xmeroriginals/easylock/blob/v1.0.0/README.md"
-                            class="btn btn-secondary btn-large">
-                            <i class="material-icons">laptop</i>
-                            <span data-key="btn_download_linux">Download for Linux</span>
-                        </a>
-                        <div class="download-info">
-                            <span class="version">v1.0.0</span>
-                            <span class="separator">•</span>
-                            <span class="compatible">Build from Source</span>
-                            <span class="separator">•</span>
-                            <span class="size">Manual</span>
-                        </div>
-                    </div>
-                </div>
+          <div class="download-buttons">
+            <div class="download-option">
+              <a
+                href="https://github.com/xmeroriginals/easylock/releases/tag/v1.0.0"
+                class="btn btn-primary btn-large"
+              >
+                <i class="material-icons">desktop_windows</i>
+                <span data-key="btn_download_windows"
+                  >Download for Windows</span
+                >
+              </a>
+              <div class="download-info">
+                <span class="version">v1.0.0</span>
+                <span class="separator">•</span>
+                <span class="compatible">Windows 10/11</span>
+                <span class="separator">•</span>
+                <span class="size">~41MB</span>
+              </div>
             </div>
+
+            <div class="download-option">
+              <a
+                href="https://github.com/xmeroriginals/easylock/blob/v1.0.0/README.md"
+                class="btn btn-secondary btn-large"
+              >
+                <i class="material-icons">laptop</i>
+                <span data-key="btn_download_linux">Download for Linux</span>
+              </a>
+              <div class="download-info">
+                <span class="version">v1.0.0</span>
+                <span class="separator">•</span>
+                <span class="compatible">Build from Source</span>
+                <span class="separator">•</span>
+                <span class="size">Manual</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <img src="assets/logotwo.png" alt="EasyLock Logo" class="footer-logo-img">
-                        <span>EasyLock</span>
-                    </div>
-                    <p class="footer-tagline" data-key="footer_tagline">Secure file encryption made easy</p>
-                    <p class="footer-tagline">Copyright © 2025 EasyLock</p>
-                    <p class="footer-tagline">All rights reserved.</p>
-                    <p class="footer-tagline">from Xmer™</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4 data-key="footer_product">Product</h4>
-                        <ul>
-                            <li><a href="#features" data-key="nav_features">Features</a></li>
-                            <li><a href="#how-it-works" data-key="nav_how">How it Works</a></li>
-                            <li><a href="#download" data-key="btn_download">Download</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4 data-key="footer_support">Support</h4>
-                        <ul>
-                            <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
-                            <li><a href="https://xmeroriginals.com/#contact" data-key="footer_contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4 data-key="footer_legal">Links</h4>
-                        <ul>
-                            <li><a href="https://github.com/xmeroriginals/easylock">GitHub</a></li>
-                            <li><a href="https://raw.githubusercontent.com/xmeroriginals/easylock/refs/heads/main/LICENSE"
-                                    data-key="footer_license">License</a></li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img
+                src="assets/logotwo.png"
+                alt="EasyLock Logo"
+                class="footer-logo-img"
+              />
+              <span>EasyLock</span>
             </div>
+            <p class="footer-tagline" data-key="footer_tagline">
+              Secure file encryption made easy
+            </p>
+            <p class="footer-tagline">Copyright © 2025 EasyLock</p>
+            <p class="footer-tagline">All rights reserved.</p>
+            <p class="footer-tagline">from Xmer™</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4 data-key="footer_product">Product</h4>
+              <ul>
+                <li>
+                  <a href="#features" data-key="nav_features">Features</a>
+                </li>
+                <li>
+                  <a href="#how-it-works" data-key="nav_how">How it Works</a>
+                </li>
+                <li>
+                  <a href="#download" data-key="btn_download">Download</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4 data-key="footer_support">Support</h4>
+              <ul>
+                <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
+                <li>
+                  <a
+                    href="https://xmeroriginals.com/#contact"
+                    data-key="footer_contact"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4 data-key="footer_legal">Links</h4>
+              <ul>
+                <li>
+                  <a href="https://github.com/xmeroriginals/easylock">GitHub</a>
+                </li>
+                <li>
+                  <a
+                    href="https://raw.githubusercontent.com/xmeroriginals/easylock/refs/heads/main/LICENSE"
+                    data-key="footer_license"
+                    >License</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script src="js/script.js"></script>
-</body>
-
+  </body>
 </html>
