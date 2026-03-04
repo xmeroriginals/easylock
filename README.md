@@ -19,12 +19,12 @@
 
 ## 📖 Overview
 
-**EasyLock** is a lightweight, user-friendly file encryption tool that seamlessly integrates into your operating system's context menu. With military-grade AES-256-GCM encryption, you can secure your sensitive files with just a right-click. Now featuring a fully integrated landing page built directly into the repository.
+**EasyLock** is a lightweight, user-friendly file encryption tool that seamlessly integrates into your operating system's context menu. With powerful AES-256-GCM encryption, you can secure your sensitive files with just a right-click. Now featuring a fully integrated landing page built directly into the repository.
 
 ### Why EasyLock?
 
 - 🚀 **Lightning Fast**: Optimized performance for instant encryption
-- 🔐 **Military-Grade Security**: AES-256-GCM encryption standard
+- 🔐 **Powerful Security**: AES-256-GCM encryption standard
 - 🖱️ **Seamless Integration**: Right-click context menu support
 - 🎨 **Modern UI**: Beautiful dark-themed interface with glassmorphism
 - 🌍 **Cross-Platform**: Windows 10/11 and Linux (Ubuntu 20.04+)
@@ -199,7 +199,7 @@ This project is licensed under the **Digital Freedom and Ethical Technology Lice
 
 ## 🌍 Türkçe / Turkish
 
-**EasyLock**, dosyalarınızı askeri düzeyde AES-256 şifreleme ile güvence altına almanın en kolay yoludur. Windows ve Linux sistemlerine doğrudan entegre olur ve internete bağlı kalmadan yerel kaynaklarla çalışır.
+**EasyLock**, dosyalarınızı güçlü AES-256 şifreleme ile güvence altına almanın en kolay yoludur. Windows ve Linux sistemlerine doğrudan entegre olur ve internete bağlı kalmadan yerel kaynaklarla çalışır.
 
 - 🔐 **AES-256-GCM**: Maksimum güvenlik
 - 🖱️ **Sağ Tık Entegrasyonu**: Kolay kullanım

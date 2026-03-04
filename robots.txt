@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://easylock.xmeroriginals.com/sitemap.xml

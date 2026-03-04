@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroDescription: "EasyLock integrates directly into your system's context menu (right-click menu), allowing you to encrypt and decrypt files instantly using powerful AES-256 encryption.",
             featuresTitle: "Key Features",
             feature1Title: "AES-256 Encryption",
-            feature1Desc: "Military-grade encryption standard to keep your sensitive data safe.",
+            feature1Desc: "High-security encryption standard to keep your sensitive data safe.",
             feature2Title: "Seamless Integration",
             feature2Desc: "Encrypt/decrypt files directly from the right-click menu. No need to open an app.",
             feature3Title: "Flexible Keys",
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroDescription: "EasyLock, doğrudan sisteminizin sağ tık menüsüne entegre olarak, güçlü AES-256 şifrelemesi kullanarak dosyaları anında şifrelemenize ve çözmenize olanak tanır.",
             featuresTitle: "Ana Özellikler",
             feature1Title: "AES-256 Şifreleme",
-            feature1Desc: "Hassas verilerinizi güvende tutmak için askeri düzeyde şifreleme standardı.",
+            feature1Desc: "Hassas verilerinizi güvende tutmak için yüksek güvenlikli şifreleme standardı.",
             feature2Title: "Sorunsuz Entegrasyon",
             feature2Desc: "Uygulama açmadan, dosyaları doğrudan sağ tık menüsünden şifreleyin/çözün.",
             feature3Title: "Esnek Anahtarlar",
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         }
     });
-    
+
     // Sayfa ilk yüklendiğinde dili ayarla
     setLanguage(currentLang);
 });
