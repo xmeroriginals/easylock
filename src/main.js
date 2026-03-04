@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navContact: "İletişim & Bağış",
             heroTitle: "EasyLock",
             heroSubtitle: "Dosyalarınızı Tek Tıkla Güvenle Şifreleyin.",
-            heroDescription: "EasyLock, doğrudan sisteminizin sağ tık menüsüne entegre olarak, güçlü AES-256 şifrelemesi kullanarak dosyaları anında şifrelemenize ve çözmenize olanak tanır.",
+            heroDescription: "EasyLock, doğrudan sisteminizin sağ tık menüsüne entegre olarak, AES-256 şifrelemesi kullanarak dosyaları anında şifrelemenize ve çözmenize olanak tanır.",
             featuresTitle: "Ana Özellikler",
             feature1Title: "AES-256 Şifreleme",
             feature1Desc: "Hassas verilerinizi güvende tutmak için yüksek güvenlikli şifreleme standardı.",

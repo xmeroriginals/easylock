@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hero
             "hero_badge": "AES-256 Şifreleme",
             "hero_title": "Dosyalarınızı Saniyeler İçinde Koruyun",
-            "hero_desc": "EasyLock, dosyalarınızı doğrudan Bağlam Menüsü'nden şifrelemenin en hızlı ve en güvenli yoludur. Güçlü AES-256 şifreleme ile güçlendirilmiştir.",
+            "hero_desc": "EasyLock, dosyalarınızı doğrudan Bağlam Menüsü'nden şifrelemenin en hızlı ve en güvenli yoludur. AES-256 şifreleme ile güçlendirilmiştir.",
             "btn_learn": "Daha Fazla Bilgi",
             "stat_encryption": "Şifreleme",
             "stat_speed": "Kilit Hızı",
