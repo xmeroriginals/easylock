@@ -3,7 +3,6 @@ import json
 import sys
 import keyring
 
-# Path configuration
 if sys.platform == 'win32':
     CONFIG_DIR = os.path.join(os.environ.get('APPDATA', os.path.expanduser('~')), 'EasyLock')
 else:
@@ -11,12 +10,10 @@ else:
 
 CONFIG_FILE = os.path.join(CONFIG_DIR, 'config.json')
 
-# Keyring identifiers
 KEYRING_SERVICE = "EasyLock"
 KEYRING_PRESET_KEY = "preset_password"
 
 def get_config() -> dict:
-    """Load the application configuration from the persistent cache."""
     if not os.path.exists(CONFIG_FILE):
         return {}
     try:
@@ -26,14 +23,12 @@ def get_config() -> dict:
         return {}
 
 def save_config(config: dict):
-    """Persist the configuration dictionary to the local cache file."""
     if not os.path.exists(CONFIG_DIR):
         os.makedirs(CONFIG_DIR, exist_ok=True)
     with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
         json.dump(config, f, indent=4)
 
 def set_preset_password(password: str):
-    """Securely store the preset password using system-native storage."""
     if password is None:
         try:
             keyring.delete_password(KEYRING_SERVICE, KEYRING_PRESET_KEY)
@@ -43,15 +38,12 @@ def set_preset_password(password: str):
         keyring.set_password(KEYRING_SERVICE, KEYRING_PRESET_KEY, password)
 
 def get_preset_password() -> str:
-    """Retrieve the preset password from secure system-native storage."""
     return keyring.get_password(KEYRING_SERVICE, KEYRING_PRESET_KEY)
 
 def is_auto_start_enabled() -> bool:
-    """Verify if the application is registered for system startup."""
     return get_config().get("auto_start", False)
 
 def set_auto_start(enabled: bool):
-    """Configure the application for automatic system startup."""
     config = get_config()
     config["auto_start"] = enabled
     save_config(config)
@@ -62,7 +54,6 @@ def set_auto_start(enabled: bool):
         _set_linux_autostart(enabled)
 
 def _set_linux_autostart(enabled: bool):
-    """Manage Linux .desktop files in ~/.config/autostart/."""
     autostart_dir = os.path.expanduser('~/.config/autostart')
     desktop_file = os.path.join(autostart_dir, 'easylock.desktop')
     
@@ -72,10 +63,10 @@ def _set_linux_autostart(enabled: bool):
             
         exe_path = sys.executable
         if getattr(sys, 'frozen', False):
-            cmd = exe_path
+            cmd = f'"{exe_path}"'
         else:
             main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "run.py"))
-            cmd = f'{exe_path} {main_py}'
+            cmd = f'"{exe_path}" "{main_py}"'
             
         content = f"""[Desktop Entry]
 Type=Application
@@ -91,7 +82,8 @@ X-GNOME-Autostart-enabled=true
     else:
         if os.path.exists(desktop_file):
             os.remove(desktop_file)
-    """Manage Windows registry entries for startup integration."""
+
+def _set_windows_autostart(enabled: bool):
     try:
         import winreg
         key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
@@ -115,7 +107,6 @@ X-GNOME-Autostart-enabled=true
         print(f"Autostart Error: {e}")
 
 def detect_language() -> str:
-    """Detect the system language and return 'TR' or 'EN'."""
     try:
         import locale
         lang, _ = locale.getdefaultlocale()
@@ -126,9 +117,7 @@ def detect_language() -> str:
     return 'EN'
 
 def get_resource_path(relative_path: str) -> str:
-    """Get the absolute path to a resource, works for dev and for PyInstaller."""
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))

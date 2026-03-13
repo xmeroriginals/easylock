@@ -1,30 +1,22 @@
-/**
- * EasyLock Website Script
- * Handles translations, animations, and mobile navigation.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Translation Data
     const translations = {
         "EN": {
-            // Navigation
             "nav_home": "Home",
             "nav_features": "Features",
             "nav_how": "How it Works",
             "nav_faq": "FAQ",
             "btn_download": "Download Now",
 
-            // Hero
             "hero_badge": "AES-256 Encryption",
             "hero_title": "Secure Your Files in Seconds",
             "hero_desc": "EasyLock is the fastest and most secure way to encrypt your files directly from the Context Menu. Powered by powerful AES-256 encryption.",
             "btn_learn": "Learn More",
+            "btn_try": "Try Online",
             "stat_encryption": "Encryption",
             "stat_speed": "Lock Speed",
             "stat_full": "Full",
             "stat_private": "Privacy",
 
-            // Features
             "features_subtitle": "Everything you need to keep your files secure",
             "feat_fast_title": "Lightning Fast",
             "feat_fast_desc": "Optimized performance ensures your files are encrypted instantly without lag.",
@@ -39,14 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat_startup_title": "Auto-Start",
             "feat_startup_desc": "Runs quietly in system tray. Always ready when you need it.",
 
-            // Showcase
             "showcase_title": "How it Works",
             "showcase_desc": "Three simple steps to secure your files",
             "step_1": "Right-click any file or folder",
             "step_2": "Select 'Lock File' from the menu",
             "step_3": "Enter password or use Preset mode",
 
-            // FAQ
             "faq_title": "Frequently Asked Questions",
             "faq_subtitle": "Everything you need to know about EasyLock",
             "faq_q1": "Is my data safe?",
@@ -58,13 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "faq_q4": "How fast is the encryption?",
             "faq_a4": "EasyLock is optimized for speed. Most common files encrypt in under a second on modern systems.",
 
-            // Download
             "download_title": "Get Started Today",
             "download_desc": "Start protecting your files in seconds. Free and open source.",
             "btn_download_windows": "Download for Windows",
             "btn_download_linux": "Download for Linux",
 
-            // Footer
             "footer_tagline": "Secure file encryption made easy",
             "footer_product": "Product",
             "footer_support": "Support",
@@ -75,24 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
             "footer_rights": "© 2024 EasyLock. All rights reserved."
         },
         "TR": {
-            // Navigation
             "nav_home": "Ana Sayfa",
             "nav_features": "Özellikler",
             "nav_how": "Nasıl Çalışır",
             "nav_faq": "S.S.S.",
             "btn_download": "Hemen İndir",
 
-            // Hero
             "hero_badge": "AES-256 Şifreleme",
             "hero_title": "Dosyalarınızı Saniyeler İçinde Koruyun",
             "hero_desc": "EasyLock, dosyalarınızı doğrudan Bağlam Menüsü'nden şifrelemenin en hızlı ve en güvenli yoludur. AES-256 şifreleme ile güçlendirilmiştir.",
             "btn_learn": "Daha Fazla Bilgi",
+            "btn_try": "Online Sürüm",
             "stat_encryption": "Şifreleme",
             "stat_speed": "Kilit Hızı",
             "stat_full": "Tam",
             "stat_private": "Gizlilik",
 
-            // Features
             "features_subtitle": "Dosyalarınızı güvende tutmak için ihtiyacınız olan her şey",
             "feat_fast_title": "Işık Hızında",
             "feat_fast_desc": "Optimize edilmiş performans, dosyalarınızın gecikme olmadan anında şifrelenmesini sağlar.",
@@ -107,14 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
             "feat_startup_title": "Otomatik Başlatma",
             "feat_startup_desc": "Sistem tepsisinde sessizce çalışır. İhtiyacınız olduğunda her zaman hazırdır.",
 
-            // Showcase
             "showcase_title": "Nasıl Çalışır",
             "showcase_desc": "Dosyalarınızı korumak için üç basit adım",
             "step_1": "Herhangi bir dosyaya veya klasöre sağ tıklayın",
             "step_2": "Menüden 'Lock File' seçeneğini seçin",
             "step_3": "Şifrenizi girin veya Ön Ayarlı modu kullanın",
 
-            // FAQ
             "faq_title": "Sıkça Sorulan Sorular",
             "faq_subtitle": "EasyLock hakkında bilmeniz gereken her şey",
             "faq_q1": "Verilerim güvende mi?",
@@ -126,13 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "faq_q4": "Şifreleme ne kadar hızlı?",
             "faq_a4": "EasyLock hız için optimize edilmiştir. Yaygın dosyalar modern sistemlerde bir saniyeden kısa sürede şifrelenir.",
 
-            // Download
             "download_title": "Bugün Başlayın",
             "download_desc": "Dosyalarınızı saniyeler içinde korumaya başlayın. Ücretsiz ve açık kaynak.",
             "btn_download_windows": "Windows için İndir",
             "btn_download_linux": "Linux için İndir",
 
-            // Footer
             "footer_tagline": "Güvenli dosya şifreleme artık çok kolay",
             "footer_product": "Ürün",
             "footer_support": "Destek",
@@ -144,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Language Selection
     let currentLang = "EN";
     const userLang = navigator.language || navigator.userLanguage;
     if (userLang.startsWith('tr')) {
@@ -158,11 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = translations[currentLang][key];
                 } else {
-                    // Preserving inner icons if they exist
                     const icon = el.querySelector('i');
                     if (icon) {
                         el.childNodes.forEach(node => {
-                            if (node.nodeType === 3) { // Text node
+                            if (node.nodeType === 3) {
                                 node.textContent = translations[currentLang][key];
                             }
                         });
@@ -177,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyTranslations();
 
-    // Mobile Menu
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const menuOverlay = document.querySelector('.mobile-menu-overlay');
     const menuLinks = document.querySelectorAll('.mobile-nav a');
@@ -198,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sticky Header
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -208,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
@@ -221,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();

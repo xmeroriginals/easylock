@@ -46,7 +46,6 @@ TEXTS = {
     }
 }
 
-# Unified design system for application dialogs
 DIALOG_STYLESHEET = """
     QDialog {
         background-color: transparent;
@@ -145,7 +144,6 @@ DIALOG_STYLESHEET = """
 
 
 class PasswordDialog(QDialog):
-    """Modern dark-themed password input dialog for lock/unlock operations."""
     
     def __init__(self, mode="lock"):
         super().__init__()
@@ -227,7 +225,6 @@ class PasswordDialog(QDialog):
             self.shake_animation()
             
     def shake_animation(self):
-        """Visual feedback for invalid input."""
         animation = QPropertyAnimation(self, b"geometry")
         animation.setDuration(500)
         geometry = self.geometry()
@@ -240,8 +237,6 @@ class PasswordDialog(QDialog):
 
 
 class PresetPasswordDialog(QDialog):
-    """Configuration dialog for preset password management."""
-    
     def __init__(self):
         super().__init__()
         self.lang = detect_language()
@@ -325,8 +320,6 @@ class PresetPasswordDialog(QDialog):
 
 
 class ConfirmationDialog(QDialog):
-    """Generic confirmation dialog with dual-choice actions."""
-    
     def __init__(self, title, message, is_destructive=False):
         super().__init__()
         self.lang = detect_language()
@@ -401,8 +394,6 @@ class ConfirmationDialog(QDialog):
 
 
 class InfoDialog(QDialog):
-    """Information and alert dialog system."""
-    
     def __init__(self, title, message, dialog_type="info"):
         super().__init__()
         self.lang = detect_language()

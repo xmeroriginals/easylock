@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dil çevirileri
     const translations = {
         en: {
             pageTitle: "EasyLock | Secure Your Files with AES-256",
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navDownload: "İndir",
             navContact: "İletişim & Bağış",
             heroTitle: "EasyLock",
-            heroSubtitle: "Dosyalarınızı Tek Tıkla Güvenle Şifreleyin.",
+            heroSubtitle: "Dosyalarınızı Tek Tıkla Şifreleyin.",
             heroDescription: "EasyLock, doğrudan sisteminizin sağ tık menüsüne entegre olarak, AES-256 şifrelemesi kullanarak dosyaları anında şifrelemenize ve çözmenize olanak tanır.",
             featuresTitle: "Ana Özellikler",
             feature1Title: "AES-256 Şifreleme",
@@ -109,8 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     langButtons.tr.addEventListener('click', () => setLanguage('tr'));
     langButtons.en.addEventListener('click', () => setLanguage('en'));
-
-    // Mobil menü
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenuButton.addEventListener('click', () => {
@@ -119,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Yükleyiciyi gizle
     window.addEventListener('load', () => {
         const loader = document.getElementById('loader');
         if (loader) {
@@ -130,6 +126,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Sayfa ilk yüklendiğinde dili ayarla
     setLanguage(currentLang);
 });

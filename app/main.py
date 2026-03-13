@@ -7,7 +7,6 @@ from app.gui.tray import EasyLockTray
 from app.utils.config import get_preset_password, detect_language
 
 def is_meta_pressed():
-    """Check if Meta (Windows/Command) key is currently pressed."""
     if sys.platform == "win32":
         try:
             import win32api
@@ -25,7 +24,6 @@ def is_meta_pressed():
             d = display.Display()
             root = d.screen().root
             keymap = root.query_pointer()._data["mask"]
-            # Mod4 = Meta / Super key mask
             Mod4Mask = 1 << 6
             return bool(keymap & Mod4Mask)
         except Exception:
@@ -34,7 +32,6 @@ def is_meta_pressed():
     return False
 
 def show_message(title, message, dialog_type="info"):
-    """Display a custom dark-themed info/error dialog."""
     app = QApplication.instance()
     if not app:
         app = QApplication(sys.argv)
@@ -45,7 +42,6 @@ def show_message(title, message, dialog_type="info"):
     dialog.exec()
 
 def main():
-    """Main execution entry point."""
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
     
@@ -53,7 +49,6 @@ def main():
     lang = detect_language()
     
     if not args:
-        # Start in system tray mode
         tray = EasyLockTray()
         sys.exit(app.exec())
         
@@ -61,9 +56,7 @@ def main():
     
     if command in ["lock", "unlock"] and len(args) > 1:
         file_path = args[1]
-        
-        # Check if Meta key is held for quick-lock using preset password
-        use_preset = is_meta_pressed()  
+        use_preset = False 
         password = None
         
         if use_preset:

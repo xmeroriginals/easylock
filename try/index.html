@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyLock Online - Secure File Encryption</title>
+    <meta name="description"
+        content="Try EasyLock online. Securely encrypt and decrypt your files directly in your browser using AES-256. No installation required.">
+
+    <link rel="icon" type="image/x-icon" href="../assets/logotwo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        .try-hero {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background: var(--gradient-hero);
+            min-height: auto;
+        }
+
+        .workspace-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 30px;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.drag-over {
+            border-color: var(--primary-color);
+            background: rgba(76, 175, 80, 0.05);
+        }
+
+        .drop-zone i {
+            font-size: 64px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .drop-zone p {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .file-list {
+            margin-bottom: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .file-size {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        .remove-file {
+            color: #ff5252;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .remove-file:hover {
+            background: rgba(255, 82, 82, 0.1);
+        }
+
+        .action-area {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--surface-elevated);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: white;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .modal-buttons .btn {
+            flex: 1;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .status-message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            min-height: 24px;
+        }
+
+        .status-message.error {
+            color: #ff5252;
+        }
+
+        .status-message.success {
+            color: var(--primary-color);
+        }
+
+        .status-message.info {
+            color: var(--accent-color);
+        }
+
+        .progress-container {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 6px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="logo-container" onclick="window.location.href='../index.html'">
+                <img src="../assets/logotwo.png" alt="EasyLock Logo" class="logo-img" />
+                <span class="logo-text">EasyLock</span>
+            </div>
+
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="../index.html#home" data-key="nav_home">Home</a></li>
+                    <li><a href="../index.html#features" data-key="nav_features">Features</a></li>
+                    <li><a href="../index.html#how-it-works" data-key="nav_how">How it Works</a></li>
+                    <li><a href="../index.html#faq" data-key="nav_faq">FAQ</a></li>
+                    <li>
+                        <a href="../index.html#download" class="btn-download-nav" data-key="btn_download">Download
+                            Now</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="try-hero">
+        <div class="particles-bg"></div>
+        <div class="container">
+            <div class="hero-content" style="max-width: 100%; margin-bottom: 40px;">
+                <div class="hero-badge" data-key="hero_badge">AES-256 Encryption</div>
+                <h1 class="section-title" data-key="try_title">EasyLock Online</h1>
+                <p class="section-subtitle" data-key="try_subtitle" style="margin-bottom: 20px;">Secure file encryption
+                    directly in your browser. All processing stays local.</p>
+            </div>
+
+            <div class="workspace-container">
+                <div class="drop-zone" id="dropZone">
+                    <i class="material-icons">cloud_upload</i>
+                    <p data-key="try_drop_text">Drag & Drop files here or click to browse</p>
+                    <input type="file" id="fileInput" multiple style="display: none;">
+                </div>
+
+                <div id="fileList" class="file-list"></div>
+
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div id="statusMsg" class="status-message"></div>
+
+                <div class="action-area" id="actionArea" style="display: none;">
+                    <button id="encryptBtn" class="btn btn-primary">
+                        <i class="material-icons">lock</i>
+                        <span data-key="try_encrypt">Encrypt</span>
+                    </button>
+                    <button id="decryptBtn" class="btn btn-secondary">
+                        <i class="material-icons">no_encryption</i>
+                        <span data-key="try_decrypt">Decrypt</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Enter Password</h3>
+            <div class="form-group">
+                <label for="passwordKey" data-key="try_pwd_label">Password</label>
+                <input type="password" id="passwordInput" class="form-control" placeholder="Minimum 12 characters"
+                    required>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="cancelBtn">
+                    <i class="material-icons">close</i>
+                    <span data-key="try_cancel">Cancel</span>
+                </button>
+                <button class="btn btn-primary" id="confirmBtn">
+                    <i class="material-icons">check</i>
+                    <span data-key="try_confirm">Confirm</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="warningModal">
+        <div class="modal-content">
+            <h3 class="modal-title" style="color: #ff9800;" data-key="warn_title">Large File Warning</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; text-align: center;" data-key="warn_desc">
+                Browsers may freeze or crash when processing very large files. For a faster and more stable experience,
+                we recommend using the EasyLock Desktop version.
+            </p>
+            <div class="modal-buttons" style="flex-direction: column;">
+                <button class="btn btn-primary" id="continueBtn">
+                    <i class="material-icons">play_arrow</i>
+                    <span data-key="warn_continue">Continue Anyway</span>
+                </button>
+                <a href="../index.html#download" class="btn btn-secondary"
+                    style="text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="material-icons">file_download</i>
+                    <span data-key="warn_desktop">Get Desktop Version</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="../assets/logotwo.png" alt="EasyLock Logo" class="footer-logo-img" />
+                        <span>EasyLock</span>
+                    </div>
+                    <p class="footer-tagline" data-key="footer_tagline">
+                        Secure file encryption made easy
+                    </p>
+                    <p class="footer-tagline">Copyright © 2026 EasyLock</p>
+                    <p class="footer-tagline">All rights reserved.</p>
+                    <p class="footer-tagline">from Xmer™</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-key="footer_product">Product</h4>
+                        <ul>
+                            <li>
+                                <a href="../index.html#features" data-key="nav_features">Features</a>
+                            </li>
+                            <li>
+                                <a href="../index.html#how-it-works" data-key="nav_how">How it Works</a>
+                            </li>
+                            <li>
+                                <a href="../index.html#download" data-key="btn_download">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-key="footer_support">Support</h4>
+                        <ul>
+                            <li><a href="../index.html#faq" data-key="nav_faq">FAQ</a></li>
+                            <li>
+                                <a href="https://xmeroriginals.com/#contact" data-key="footer_contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-key="footer_legal">Links</h4>
+                        <ul>
+                            <li>
+                                <a href="https://github.com/xmeroriginals/easylock">GitHub</a>
+                            </li>
+                            <li>
+                                <a href="https://raw.githubusercontent.com/xmeroriginals/easylock/refs/heads/main/LICENSE"
+                                    data-key="footer_license">License</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/argon2-browser@1.18.0/dist/argon2-bundled.min.js"
+        integrity="sha256-d8ZLlGuvGlEW3FkfS5ll1jaxtFX3Xt0tSlh8t14BaHs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.11.0/sha256.min.js"></script>
+    <script src="crypto-handler.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            const translations = {
+                "EN": {
+                    "nav_home": "Home", "nav_features": "Features", "nav_how": "How it Works", "nav_faq": "FAQ",
+                    "hero_badge": "AES-256 Encryption", "btn_download": "Download Now",
+                    "try_title": "EasyLock Online", "try_subtitle": "Secure file encryption directly in your browser. All processing stays local.",
+                    "try_drop_text": "Drag & Drop files here or click to browse", "try_encrypt": "Encrypt", "try_decrypt": "Decrypt",
+                    "try_pwd_label": "Password", "try_cancel": "Cancel", "try_confirm": "Confirm",
+                    "warn_title": "Large File Warning", "warn_desc": "Browsers may freeze or crash when processing very large files. For a faster and more stable experience, we recommend using the EasyLock Desktop version.",
+                    "warn_continue": "Continue Anyway", "warn_desktop": "Get Desktop Version",
+                    "pwd_title_encrypt": "Encrypt Files", "pwd_title_decrypt": "Decrypt Files",
+                    "footer_tagline": "Secure file encryption made easy", "footer_product": "Product",
+                    "footer_support": "Support", "footer_legal": "Links", "footer_contact": "Contact", "footer_license": "License"
+                },
+                "TR": {
+                    "nav_home": "Ana Sayfa", "nav_features": "Özellikler", "nav_how": "Nasıl Çalışır", "nav_faq": "S.S.S.",
+                    "hero_badge": "AES-256 Şifreleme", "btn_download": "Hemen İndir",
+                    "try_title": "EasyLock Online", "try_subtitle": "Dosyalarınızı doğrudan tarayıcınızda güvenle şifreleyin. Tüm işlemler yerel kalır.",
+                    "try_drop_text": "Dosyaları buraya sürükleyin veya göz atmak için tıklayın", "try_encrypt": "Şifrele", "try_decrypt": "Şifreyi Çöz",
+                    "try_pwd_label": "Şifre", "try_cancel": "İptal", "try_confirm": "Onayla",
+                    "warn_title": "Büyük Dosya Uyarısı", "warn_desc": "Tarayıcılar çok büyük dosyaları işlerken donabilir veya çökebilir. Daha hızlı ve kararlı bir deneyim için EasyLock Masaüstü sürümünü kullanmanızı öneririz.",
+                    "warn_continue": "Yine de Devam Et", "warn_desktop": "Masaüstü Sürümünü İndir",
+                    "pwd_title_encrypt": "Dosyaları Şifrele", "pwd_title_decrypt": "Şifreyi Çöz",
+                    "footer_tagline": "Güvenli dosya şifreleme artık çok kolay", "footer_product": "Ürün",
+                    "footer_support": "Destek", "footer_legal": "Bağlantılar", "footer_contact": "İletişim", "footer_license": "Lisans"
+                }
+            };
+
+            const lang = navigator.language.startsWith('tr') ? 'TR' : 'EN';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        const textSpan = el.querySelector('span');
+                        if (textSpan) {
+                            textSpan.textContent = translations[lang][key];
+                        } else {
+                            if (el.children.length === 0) {
+                                el.textContent = translations[lang][key];
+                            } else {
+                                Array.from(el.childNodes).forEach(node => {
+                                    if (node.nodeType === 3 && node.textContent.trim().length > 0) {
+                                        node.textContent = translations[lang][key];
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            });
+            document.documentElement.lang = lang.toLowerCase();
+        });
+    </script>
+</body>
+
+</html>
